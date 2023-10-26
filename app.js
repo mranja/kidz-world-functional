@@ -123,6 +123,8 @@ function updatePrice() {
 
 cartButton.onclick = () => {
   updatePrice();
+  whatsappUpdate();
+  window.open(whatsapp, "_blank") 
 
 
   for (let index = 0; index < items.length; index++) {
@@ -140,3 +142,16 @@ cartButton.onclick = () => {
     "The total amount is " + finalDollars + "$ and " + finalCents + " cents"
   );
 };
+
+var whatsapp = "https://api.whatsapp.com/send?phone=919025496316&text=Order%20details"
+
+function whatsappUpdate(){
+  for (let i = 0; i < items.length; i++) {
+    if (items[i].quantity != 0) {
+      whatsapp+= items[i].name + "%20"+items[i].quantity+ ":"
+    }
+  }
+
+  whatsapp+= "%20The%20total%20amount%20is%20" + finalDollars + "$%20and%20" + finalCents + "%20cents"
+
+}
